@@ -40,6 +40,22 @@ Aguarde até que o processo seja concluído. Isso pode levar algum tempo, depend
 
 Uma vez concluído, o ambiente Protheus estará disponível nos containers Docker.
 
+Aguarde até que o processo seja concluído. Isso pode levar algum tempo, dependendo das configurações e do tamanho dos containers.
+
+Uma vez concluído, o ambiente Protheus estará disponível nos containers Docker.
+
+# Para acessar o Protheus Web:
+
+Abra um navegador e acesse http://127.0.0.1:8080/.
+Faça login com o usuário admin e senha vazia (sem senha).
+Para usar o ambiente PO-UI, você precisará alterar a senha do usuário admin, caso contrário, a tela de login não avançará sem senha.
+
+Para utilizar o Protheus Web com os programas SIGAMDI ou SIGACFG:
+
+Após fazer o login, abra o programa desejado (SIGAMDI ou SIGACFG) com envirioment "enviroment".
+Utilize o usuário admin e senha vazia (sem senha) para fazer o login.
+
+
 ## Script `start.ps1`
 
 O script `start.ps1` automatiza a configuração e a execução dos containers Docker do Protheus. Ele executa uma série de comandos que configuram os containers necessários, definem arquivos de configuração e iniciam o ambiente Protheus.
