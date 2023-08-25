@@ -4,7 +4,28 @@ Este repositório contém um conjunto de arquivos e scripts para configurar e ex
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de que você tenha o Docker instalado em sua máquina. Você pode baixar e instalar o Docker a partir do [site oficial do Docker](https://www.docker.com/get-started).
+### Baixando Arquivos Necessários do Google Drive
+
+Para que a configuração do ambiente Protheus seja completa, você precisará baixar dois arquivos específicos, que são `sxsbra.txt` e `tttm120.rpo`. Esses arquivos contêm informações e dados importantes para o funcionamento adequado do ambiente Protheus.
+
+Os arquivos podem ser baixados a partir deste link do Google Drive: [Baixar Arquivos](https://drive.google.com/drive/folders/1Af9_ZCXitiXX55v-8Vw8k-eB95RYh3Op?usp=sharing). Certifique-se de que você tem permissões de acesso para baixar os arquivos.
+
+#### Instruções para Baixar os Arquivos:
+
+1. Acesse o [link para a pasta no Google Drive](https://drive.google.com/drive/folders/1Af9_ZCXitiXX55v-8Vw8k-eB95RYh3Op?usp=sharing).
+
+2. Localize os arquivos `sxsbra.txt` e `tttm120.rpo` na lista de arquivos.
+
+3. Clique com o botão direito do mouse no arquivo que você deseja baixar e selecione a opção "Fazer download". O arquivo será baixado para o seu computador.
+
+4. Certifique-se de salvar esses arquivos na pasta correspondente dentro do diretório do repositório que você clonou. Coloque o arquivo `sxsbra.txt` na pasta raiz e o arquivo `tttm120.rpo` na pasta raiz.
+
+Após baixar e colocar esses arquivos nos locais corretos, você estará pronto para prosseguir com a configuração e execução dos containers Docker do ambiente Protheus.
+
+### Docker
+
+Além de baixar os arquivos do Google Drive, lembre-se de que você também deve ter o Docker instalado em sua máquina. Você pode baixar e instalar o Docker a partir do [site oficial do Docker](https://www.docker.com/get-started).
+
 
 ## Estrutura do Repositório
 
@@ -44,13 +65,6 @@ Aguarde até que o processo seja concluído. Isso pode levar algum tempo, depend
 
 Uma vez concluído, o ambiente Protheus estará disponível nos containers Docker.
 
-### Instalação do Git LFS
-
-Além do Docker, este repositório utiliza o Git LFS (Large File Storage) para gerenciar arquivos binários ou grandes, como os arquivos de configuração do Protheus. Para garantir um melhor funcionamento, é recomendável instalar o Git LFS antes de clonar ou utilizar este repositório. Você pode instalar o Git LFS através do seguinte comando:
-
-```bash
-git lfs install --skip-repo
-```
 
 ## Script `start.ps1`
 
