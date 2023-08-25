@@ -44,17 +44,13 @@ Aguarde até que o processo seja concluído. Isso pode levar algum tempo, depend
 
 Uma vez concluído, o ambiente Protheus estará disponível nos containers Docker.
 
-# Para acessar o Protheus Web:
+### Instalação do Git LFS
 
-Abra um navegador e acesse http://127.0.0.1:8080/.
-Faça login com o usuário admin e senha vazia (sem senha).
-Para usar o ambiente PO-UI, você precisará alterar a senha do usuário admin, caso contrário, a tela de login não avançará sem senha.
+Além do Docker, este repositório utiliza o Git LFS (Large File Storage) para gerenciar arquivos binários ou grandes, como os arquivos de configuração do Protheus. Para garantir um melhor funcionamento, é recomendável instalar o Git LFS antes de clonar ou utilizar este repositório. Você pode instalar o Git LFS através do seguinte comando:
 
-Para utilizar o Protheus Web com os programas SIGAMDI ou SIGACFG:
-
-Após fazer o login, abra o programa desejado (SIGAMDI ou SIGACFG) com envirioment "enviroment".
-Utilize o usuário admin e senha vazia (sem senha) para fazer o login.
-
+```bash
+git lfs install --skip-repo
+```
 
 ## Script `start.ps1`
 
@@ -68,6 +64,16 @@ O script realiza as seguintes etapas:
 4. Execução do comando `docker-compose up -d` para iniciar os containers.
 
 Certifique-se de que os arquivos de configuração e os arquivos específicos do Protheus estejam corretamente localizados no diretório do repositório antes de executar o script.
+# Para acessar o Protheus Web:
+
+Abra um navegador e acesse http://127.0.0.1:8080/.
+Faça login com o usuário admin e senha vazia (sem senha).
+Para usar o ambiente PO-UI, você precisará alterar a senha do usuário admin, caso contrário, a tela de login não avançará sem senha.
+
+Para utilizar o Protheus Web com os programas SIGAMDI ou SIGACFG:
+
+Após fazer o login, abra o programa desejado (SIGAMDI ou SIGACFG) com envirioment "enviroment".
+Utilize o usuário admin e senha vazia (sem senha) para fazer o login.
 
 ## Contribuições
 

@@ -1,3 +1,1 @@
-*.txt filter=lfs diff=lfs merge=lfs -text
-*.unq filter=lfs diff=lfs merge=lfs -text
-*.rpo filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
