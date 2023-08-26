@@ -8,7 +8,7 @@ docker run --rm `
         -a protheus `
         -d postgres `
         -c '/usr/lib64/libodbc.so' `
-        -o 'ConnectionMode=2;ConnectionString=DRIVER!{PostgreSQL}@SERVERNAME!postgres-iniciado@PORT!5432@DATABASE!protheus@USERNAME!postgres@PASSWORD!postgres' `
+        -o 'ConnectionMode=2;ConnectionString=DRIVER!{PostgreSQL}@SERVERNAME!postgres-db@PORT!5432@DATABASE!protheus@USERNAME!postgres@PASSWORD!postgres' `
         -g 'LicenseServer=license;LicensePort=5555'
 
 (Get-Content dbaccess.ini) -replace '!', '=' -replace '@', ';' | Set-Content dbaccess2.ini
@@ -105,21 +105,35 @@ ENVIRONMENT=ENVIRONMENT
 $pgadminServerJson = @"
 {
   "Servers": {
-    "1": {
-      "Name": "PostgreSQL Server",
-      "Group": "Servers",
-      "Host": "postgres-db",  # The service name defined in your docker-compose.yml
-      "Port": 5432,
-      "Username": "postgres",  # Your PostgreSQL username
-      "SSLMode": "prefer",
-      "MaintenanceDB": "postgres",
-      "Passfile": "/var/lib/pgadmin/servers.passfile"
-    }
+      "1": {
+          "Name": "postgres-db",
+          "Group": "Servers",
+          "Host": "postgres-db",
+          "Port": 5432,
+          "MaintenanceDB": "postgres",
+          "Username": "postgres",
+          "UseSSHTunnel": 0,
+          "TunnelPort": "22",
+          "TunnelAuthentication": 0,
+          "KerberosAuthentication": false,
+          "ConnectionParameters": {
+              "sslmode": "prefer",
+              "connect_timeout": 10,
+              "sslcert": "<STORAGE_DIR>/.postgresql/postgresql.crt",
+              "sslkey": "<STORAGE_DIR>/.postgresql/postgresql.key"
+          }
+      }
   }
 }
 "@
 
-$pgadminServerJson | Set-Content -Path "pgadmin4_server.json"
+# Create the directory if it doesn't exist
+$directory = "pgadmin4"
+if (-not (Test-Path $directory)) {
+    New-Item -ItemType Directory -Path $directory
+}
+
+$pgadminServerJson | Set-Content -Path "$directory/servers.json"
 
 @"
 version: '3.6'
@@ -130,8 +144,8 @@ services:
 
   postgres-db:
     image: 'totvsengpro/postgres-dev:12.1.2210_bra'
-    volumes:
-      - '${PWD}/postgresdata/:/var/lib/postgresql/data'
+#    volumes:
+#      - '${PWD}/postgresdata/:/var/lib/postgresql/data'
     ports:
       - '5432:5432'
       
@@ -163,10 +177,10 @@ services:
         - PGADMIN_DEFAULT_EMAIL=user@example.com
         - PGADMIN_DEFAULT_PASSWORD=SuperSecretPassword
       volumes:
-        - '${PWD}/pgadmin4_server.json:/pgadmin4/servers.json' # Map the servers.json file
+        - '${PWD}/pgadmin4/servers.json:/pgadmin4/servers.json' # Map the servers.json file
       
-volumes:
-      postgresdata:      
+#volumes:
+#      postgresdata:      
 "@ | Set-Content -Path "docker-compose.yml"
 
 docker-compose up -d
