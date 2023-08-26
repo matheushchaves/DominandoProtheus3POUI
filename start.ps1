@@ -108,9 +108,11 @@ services:
   license:
     image: 'totvsengpro/license-dev'
 
-  postgres-iniciado:
+  postgres-db:
     image: 'totvsengpro/postgres-dev:12.1.2210_bra'
-
+    volumes:
+      - '${PWD}/postgresdata/:/var/lib/postgresql/data'
+      
   dbaccess-postgres:
     image: 'totvsengpro/dbaccess-postgres-dev'
     volumes:
@@ -128,6 +130,9 @@ services:
       - '8080:8080'
       - '1234:1234'
       - '8081:8081'
+
+volumes:
+      postgresdata:      
 "@ | Set-Content -Path "docker-compose.yml"
 
 docker-compose up -d
