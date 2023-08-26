@@ -178,6 +178,7 @@ services:
         - PGADMIN_DEFAULT_PASSWORD=SuperSecretPassword
       volumes:
         - '${PWD}/pgadmin4/servers.json:/pgadmin4/servers.json' # Map the servers.json file
+        - '${PWD}/pgadmin4/storage:/var/lib/pgadmin/storage' # Used for storage of config/keys/etc
       
 #volumes:
 #      postgresdata:      

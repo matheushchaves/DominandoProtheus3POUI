@@ -119,6 +119,7 @@ Após concluir suas tarefas com o pgAdmin 4 e os outros serviços, você pode en
 
 ```bash
 docker-compose down
+```
 
 ## Contribuições
 
