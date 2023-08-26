@@ -89,6 +89,37 @@ Para utilizar o Protheus Web com os programas SIGAMDI ou SIGACFG:
 Após fazer o login, abra o programa desejado (SIGAMDI ou SIGACFG) com envirioment "enviroment".
 Utilize o usuário admin e senha vazia (sem senha) para fazer o login.
 
+## Acesso ao pgAdmin 4
+
+Após a execução bem-sucedida do script anterior, siga estas etapas para acessar o pgAdmin 4:
+
+1. Abra um navegador da web em sua máquina.
+
+2. Acesse a URL [http://localhost:5050](http://localhost:5050) para acessar a interface do pgAdmin 4.
+
+3. Faça login com as seguintes credenciais:
+   - E-mail: `user@example.com`
+   - Senha: `SuperSecretPassword`
+
+4. Após o login, você será direcionado ao painel de controle do pgAdmin 4.
+
+5. No painel esquerdo, expanda a seção "Servers" para ver o servidor PostgreSQL configurado.
+
+6. Clique com o botão direito do mouse no servidor PostgreSQL e selecione "Connect Server".
+
+7. Agora você pode explorar e gerenciar seu servidor PostgreSQL usando o pgAdmin 4.
+
+Lembre-se de que os detalhes de configuração, como o endereço do servidor PostgreSQL, a porta e as credenciais, foram configurados no arquivo `pgadmin4_server.json` durante a execução do script.
+
+---
+
+### Encerrando o Ambiente
+
+Após concluir suas tarefas com o pgAdmin 4 e os outros serviços, você pode encerrar o ambiente Docker usando o seguinte comando:
+
+```bash
+docker-compose down
+
 ## Contribuições
 
 Se você deseja contribuir para este repositório, siga as etapas mencionadas no README original. Certifique-se de que suas contribuições sejam relevantes para o contexto do ambiente Protheus.
