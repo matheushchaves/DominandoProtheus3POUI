@@ -101,6 +101,26 @@ MAIN=HTTP_START
 ENVIRONMENT=ENVIRONMENT
 "@ | Set-Content -Path "appserver.ini"
 
+# Replace the placeholders with actual values
+$pgadminServerJson = @"
+{
+  "Servers": {
+    "1": {
+      "Name": "PostgreSQL Server",
+      "Group": "Servers",
+      "Host": "postgres-db",  # The service name defined in your docker-compose.yml
+      "Port": 5432,
+      "Username": "postgres",  # Your PostgreSQL username
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres",
+      "Passfile": "/var/lib/pgadmin/servers.passfile"
+    }
+  }
+}
+"@
+
+$pgadminServerJson | Set-Content -Path "pgadmin4_server.json"
+
 @"
 version: '3.6'
 
@@ -112,11 +132,15 @@ services:
     image: 'totvsengpro/postgres-dev:12.1.2210_bra'
     volumes:
       - '${PWD}/postgresdata/:/var/lib/postgresql/data'
+    ports:
+      - '5432:5432'
       
   dbaccess-postgres:
     image: 'totvsengpro/dbaccess-postgres-dev'
     volumes:
       - '${PWD}/dbaccess.ini:/opt/totvs/dbaccess/multi/dbaccess.ini'
+    ports:
+      - '7890:7890'
 
   appserver:
     image: 'totvsengpro/appserver-dev'
@@ -130,7 +154,17 @@ services:
       - '8080:8080'
       - '1234:1234'
       - '8081:8081'
-
+    
+  pgadmin:
+      image: 'dpage/pgadmin4'
+      ports:
+        - '5050:80'  # Map pgAdmin container port 80 to host port 5050
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=user@example.com
+        - PGADMIN_DEFAULT_PASSWORD=SuperSecretPassword
+      volumes:
+        - '${PWD}/pgadmin4_server.json:/pgadmin4/servers.json' # Map the servers.json file
+      
 volumes:
       postgresdata:      
 "@ | Set-Content -Path "docker-compose.yml"
