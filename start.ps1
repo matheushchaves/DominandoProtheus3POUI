@@ -29,7 +29,7 @@ dbserver=dbaccess-postgres
 dbport=7890
 topmemomega=10
 specialkey=exemplo
-FWLOGMSG_DEBUG=1
+FWTRACELOG=1
 
 [environment]
 rpodb=top
@@ -45,7 +45,7 @@ dbserver=dbaccess-postgres
 dbport=7890
 topmemomega=10
 specialkey=exemplo
-FWLOGMSG_DEBUG=1
+FWTRACELOG=1
 
 [general]
 buildkillusers=1
