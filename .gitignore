@@ -10,3 +10,5 @@ pgadmin4_server.json
 pgadmin4/*
 README.md
 .vscode/launch.json
+/SmartClient20.3.1.5/*
+```
