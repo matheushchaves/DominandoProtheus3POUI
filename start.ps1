@@ -1,11 +1,23 @@
 Clear-Host
 
-# Se o serviço do Docker Desktop estiver em execução, execute o script
-if ((Get-Service -Name "com.docker.service").Status -eq "Running") {
-    Write-Host "Docker is running"
+# Caminho para o Docker Desktop. Modifique se o seu caminho for diferente.
+$dockerDesktopPath = "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+Write-Host "Verifying if Docker Desktop is running..."
+# Verifica se o Docker Desktop está em execução
+$dockerDesktopProcess = Get-Process | Where-Object { $_.Path -eq $dockerDesktopPath }
+if (-not $dockerDesktopProcess) {
+    # Inicia o Docker Desktop
+    Start-Process -FilePath $dockerDesktopPath
+    # Espera por 10 segundos para permitir que o Docker inicialize completamente
+    Start-Sleep -Seconds 30
+}
+
+# Você pode adicionar uma verificação adicional aqui para verificar se o Docker Desktop iniciou corretamente
+$dockerDesktopProcess = Get-Process | Where-Object { $_.Path -eq $dockerDesktopPath }
+if ($dockerDesktopProcess) {
+    Write-Host "Docker Desktop is running"
 } else {
-    Write-Host "Docker is not running, it`s necessary to start the service"
-    return    
+    Write-Host "Failed to start Docker Desktop"
 }
 
 docker run --rm `
