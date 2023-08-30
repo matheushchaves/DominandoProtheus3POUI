@@ -1,15 +1,11 @@
 Clear-Host
-# Verifica se o serviço do Docker Desktop está em execução
-if (!((Get-Service -Name "com.docker.service").Status -eq "Running")) {
-    # Inicia o serviço do Docker Desktop
-    Start-Service -Name "com.docker.service"
-    # Espera por 10 segundos para permitir que o Docker inicialize completamente
-    Start-Sleep -Seconds 10
-}
 
 # Se o serviço do Docker Desktop estiver em execução, execute o script
 if ((Get-Service -Name "com.docker.service").Status -eq "Running") {
     Write-Host "Docker is running"
+} else {
+    Write-Host "Docker is not running, it`s necessary to start the service"
+    return    
 }
 
 docker run --rm `
