@@ -1,0 +1,12 @@
+{
+    "/api": {
+      "target": "http://localhost:8090/rest",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "headers": {
+        "Authorization": "Basic YWRtaW46YWRtaW4="
+      }
+    }
+  }
+  
