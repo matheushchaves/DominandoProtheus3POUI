@@ -1,3 +1,12 @@
 <po-page-default>
-<p>crud works!</p>
+    <po-table
+    [p-auto-collapse]="true"
+    [p-columns]="columns"
+    [p-hide-columns-manager]="true"
+    p-service-api="/api/framework/v1/genericList?alias=C0A"
+    [p-filtered-columns]="filteredColumns"
+    [p-sort]="true"
+    [p-striped]="true"
+    
+  ></po-table>
 </po-page-default>
