@@ -11,6 +11,6 @@ pgadmin4/*
 README.md
 .vscode/launch.json
 /SmartClient20.3.1.5/*
-```
 .vscode/.advpl/*
 dbmonitor.ini
+/src/projects/*
