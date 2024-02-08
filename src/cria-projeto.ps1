@@ -16,18 +16,28 @@ if (-not (Test-Path $pastaDeDestino)) {
 # Muda o diretório corrente para a pasta do projeto
 Set-Location -Path $pastaDeDestino
 
-# Clona o repositório template
-git clone --depth 1 --filter=blob:none --sparse $urlDoTemplate .
-git sparse-checkout set src/template
+# Inicializa um repositório Git vazio
+git init
+git remote add origin $urlDoTemplate
 
-# Move os conteúdos de src/template para a pasta raiz e remove as pastas desnecessárias
-Move-Item src\template\* .\
-Remove-Item src -Recurse
+# Configura sparse-checkout
+git config core.sparseCheckout true
+
+# Especifica os caminhos para serem incluídos
+echo "src/template/*" | Out-File -Encoding ASCII -FilePath .git/info/sparse-checkout
+
+# Busca e faz checkout do branch principal (ajuste 'main' se o branch for diferente)
+git fetch --depth=1 origin main
+git checkout main
 
 # Remove a configuração do git original para iniciar um novo repositório
 Remove-Item .git -Recurse -Force
 
-# Inicializa um novo repositório Git
+# Move os conteúdos clonados para a pasta raiz do projeto e remove as pastas desnecessárias
+Move-Item src\template\* .\
+Remove-Item src -Recurse
+
+# Re-inicializa um novo repositório Git
 git init
 git add .
 git commit -m "Inicialização do projeto $nomeDoNovoProjeto a partir do template."
