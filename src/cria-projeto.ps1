@@ -56,5 +56,7 @@ if ($vincularRemoto -eq 'S' -or $vincularRemoto -eq 's') {
 # Exibe mensagem de sucesso
 Write-Host "Projeto $nomeDoNovoProjeto criado com sucesso em $pastaDeDestino"
 
+npm i subsink
+
 # Retorna ao diretório original onde o script foi executado
 Set-Location -Path $scriptPath
