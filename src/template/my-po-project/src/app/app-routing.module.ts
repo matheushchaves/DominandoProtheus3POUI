@@ -4,11 +4,11 @@ import { CrudComponent } from './crud/crud.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '*',  component: AppComponent },
-  { path: 'home',  component: AppComponent },
+  { path: '',  redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para /home
+  { path: 'home',  component: AppComponent },  
   { path: 'crud',  component: CrudComponent },
+  { path: '**',  component: AppComponent }, // Rota wildcard para capturar qualquer caminho não definido
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

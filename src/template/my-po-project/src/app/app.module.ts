@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ProtheusLibCoreModule } from '@totvs/protheus-lib-core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PoModule } from '@po-ui/ng-components';
@@ -20,7 +20,8 @@ import { CrudComponent } from './crud/crud.component';
     PoModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    PoTemplatesModule
+    PoTemplatesModule,
+    ProtheusLibCoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
