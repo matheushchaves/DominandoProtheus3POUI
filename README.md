@@ -113,26 +113,26 @@ Lembre-se de que os detalhes de configuração, como o endereço do servidor Pos
 
 ---
 
-Como Usar cria-projeto.ps1
-Abrir o PowerShell: Abra o PowerShell no diretório onde deseja executar o script.
+## Como Usar cria-projeto.ps1
+1. Abrir o PowerShell: Abra o PowerShell no diretório onde deseja executar o script.
 
-Executar o Script: Cole o script no PowerShell e pressione Enter. O script solicitará algumas informações durante a execução.
+2. Executar o Script: Cole o script no PowerShell e pressione Enter. O script solicitará algumas informações durante a execução.
 
-Nome do Novo Projeto: Quando solicitado, insira o nome do novo projeto. Este nome será usado para criar uma nova pasta dentro de um diretório 'projects' localizado no mesmo diretório do script.
+3. Nome do Novo Projeto: Quando solicitado, insira o nome do novo projeto. Este nome será usado para criar uma nova pasta dentro de um diretório 'projects' localizado no mesmo diretório do script.
 
-URL do Template: Por padrão, o script utiliza um repositório Git como template. O URL já está pré-definido no script (https://github.com/matheushchaves/DominandoProtheus3POUI.git), mas você pode modificar o script para usar outro template se desejar.
+4. URL do Template: Por padrão, o script utiliza um repositório Git como template. O URL já está pré-definido no script (https://github.com/matheushchaves/DominandoProtheus3POUI.git), mas você pode modificar o script para usar outro template se desejar.
 
-Configuração do Projeto:
+5. Configuração do Projeto:
 
 O script criará a pasta do projeto, inicializará um repositório Git vazio e configurará o sparse-checkout para incluir apenas os caminhos especificados do template.
 Em seguida, fará o fetch do branch principal do repositório template e aplicará um checkout.
-Inicialização do Projeto: Após mover os arquivos necessários, o script re-inicializa um novo repositório Git, adiciona todos os arquivos e faz o primeiro commit.
+6. Inicialização do Projeto: Após mover os arquivos necessários, o script re-inicializa um novo repositório Git, adiciona todos os arquivos e faz o primeiro commit.
 
-Vinculação a um Repositório Git Remoto: O script perguntará se você deseja vincular o projeto a um repositório Git remoto. Se escolher "S", será solicitado a inserir a URL do repositório remoto. Após a vinculação, o projeto será enviado (push) para o repositório remoto.
+7. Vinculação a um Repositório Git Remoto: O script perguntará se você deseja vincular o projeto a um repositório Git remoto. Se escolher "S", será solicitado a inserir a URL do repositório remoto. Após a vinculação, o projeto será enviado (push) para o repositório remoto.
 
-Instalação de Dependências: Por fim, o script instala as dependências necessárias usando o comando npm i subsink.
+8. Instalação de Dependências: Por fim, o script instala as dependências necessárias usando o comando npm i subsink.
 
-Finalização: Uma mensagem de sucesso será exibida, indicando que o projeto foi criado com sucesso no diretório especificado.
+9. Finalização: Uma mensagem de sucesso será exibida, indicando que o projeto foi criado com sucesso no diretório especificado.
 ---
 
 ### Encerrando o Ambiente
